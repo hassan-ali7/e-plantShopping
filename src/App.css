@@ -113,6 +113,70 @@
 .product-list-container.visible {
   top: 0;
 }
+.product-grid {
+  display: grid;
+  grid-template-columns: auto; /* Creates a responsive grid */
+  gap: 20px; /* Adds space between grid items */
+}
+
+.category-section {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.plant-list {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+}
+
+.plant-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px; /* Set a consistent card height */
+}
+
+.plant-card img {
+  width: 100%;  /* Ensures the image spans the entire card width */
+  height: 150px; /* Ensures consistent image height */
+  object-fit: cover; /* Crops the image if it doesn't fit */
+  margin-bottom: 16px;
+}
+
+.plant-cost {
+  font-weight: bold;
+  color: green;
+}
+
+.add-to-cart-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #218838;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* LandingPage.css */
 @media screen and (max-width: 768px) {
   .content {

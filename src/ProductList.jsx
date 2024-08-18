@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import { addItem } from './CartSlice';
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-
+    const [addedToCart, setAddedToCart] = useState({});
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -232,6 +233,13 @@ function ProductList() {
     fontSize: '30px',
     textDecoration: 'none',
    }
+   const handleAddToCart = (product) => {
+    dispatch(addItem(product));
+    setAddedToCart((prevState) => ({
+       ...prevState,
+       [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+     }));
+  };
    const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -268,7 +276,22 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
-
+                 {plantsArray.map((categoryItem, categoryIndex) => (
+        <div key={categoryIndex} className="category-section">
+          <h2>{categoryItem.category}</h2>
+          <div className="plant-list">
+            {categoryItem.plants.map((plant, plantIndex) => (
+              <div key={plantIndex} className="plant-card">
+                <img src={plant.image} alt={plant.name} />
+                <h3>{plant.name}</h3>
+                <p>{plant.description}</p>
+                <p className="plant-cost">{plant.cost}</p>
+                <button className="add-to-cart-btn">Add to Cart</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
 
         </div>
  ) :  (
